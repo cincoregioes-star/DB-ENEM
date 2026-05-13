@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>DB ENEM | Data Bank ENEM</title>
   <meta name="description" content="DB ENEM - Data Bank ENEM com simulados gratuitos, premium por disciplina e acesso vitalício aos 17 simulados digitais." />
@@ -639,6 +639,81 @@
       font-size:14px;
     }
 
+
+    .radar-copa-box{
+      padding:58px 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,211,57,.20), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(30,203,255,.14), transparent 28%),
+        linear-gradient(135deg,#06142e,#0b1322 52%,#0f766e);
+      border-top:1px solid rgba(255,211,57,.22);
+      border-bottom:1px solid rgba(255,211,57,.22);
+    }
+
+    .radar-copa-inner{
+      width:min(var(--max),calc(100% - 32px));
+      margin:auto;
+      border:1px solid rgba(255,211,57,.35);
+      border-radius:28px;
+      padding:34px;
+      background:rgba(6,11,20,.72);
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      align-items:center;
+    }
+
+    .radar-copa-inner h2{
+      color:var(--brand);
+      font-size:clamp(30px,4vw,48px);
+      line-height:1.05;
+      margin:12px 0;
+    }
+
+    .radar-copa-inner p{
+      color:#dce8ff;
+      font-size:17px;
+      margin-bottom:18px;
+    }
+
+    .radar-copa-regras{
+      display:grid;
+      gap:10px;
+    }
+
+    .radar-copa-regras div{
+      padding:14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:#f4f7ff;
+      font-weight:800;
+    }
+
+    .radar-copa-regras b{
+      color:var(--brand);
+    }
+
+    .radar-copa-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .radar-copa-actions a{
+      text-decoration:none;
+    }
+
+    @media(max-width:900px){
+      .radar-copa-inner{
+        grid-template-columns:1fr;
+        padding:24px;
+      }
+    }
+
+
     .mobile-cta{
       position:fixed;
       left:12px;
@@ -725,7 +800,82 @@
         padding:56px 0;
       }
 
-      .mobile-cta{
+  
+    .radar-copa-box{
+      padding:58px 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,211,57,.20), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(30,203,255,.14), transparent 28%),
+        linear-gradient(135deg,#06142e,#0b1322 52%,#0f766e);
+      border-top:1px solid rgba(255,211,57,.22);
+      border-bottom:1px solid rgba(255,211,57,.22);
+    }
+
+    .radar-copa-inner{
+      width:min(var(--max),calc(100% - 32px));
+      margin:auto;
+      border:1px solid rgba(255,211,57,.35);
+      border-radius:28px;
+      padding:34px;
+      background:rgba(6,11,20,.72);
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      align-items:center;
+    }
+
+    .radar-copa-inner h2{
+      color:var(--brand);
+      font-size:clamp(30px,4vw,48px);
+      line-height:1.05;
+      margin:12px 0;
+    }
+
+    .radar-copa-inner p{
+      color:#dce8ff;
+      font-size:17px;
+      margin-bottom:18px;
+    }
+
+    .radar-copa-regras{
+      display:grid;
+      gap:10px;
+    }
+
+    .radar-copa-regras div{
+      padding:14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:#f4f7ff;
+      font-weight:800;
+    }
+
+    .radar-copa-regras b{
+      color:var(--brand);
+    }
+
+    .radar-copa-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .radar-copa-actions a{
+      text-decoration:none;
+    }
+
+    @media(max-width:900px){
+      .radar-copa-inner{
+        grid-template-columns:1fr;
+        padding:24px;
+      }
+    }
+
+
+    .mobile-cta{
         display:flex;
       }
 
@@ -832,6 +982,33 @@
       </div>
     </section>
 
+
+    <section class="radar-copa-box" id="radar-copa-recompensa">
+      <div class="radar-copa-inner">
+        <div>
+          <span class="badge">🎁 Radar Copa 2026</span>
+          <h2>Ganhe figurinhas do álbum estudando no DB ENEM</h2>
+          <p>
+            Quem chega pelo Radar Copa pode ganhar recompensas no álbum
+            <strong>História em Campo 2026</strong>. Faça testes, avance nos simulados
+            e volte ao álbum para verificar as recompensas.
+          </p>
+
+          <div class="radar-copa-actions">
+            <a class="btn btn-primary" href="https://cincoregioes-star.github.io/RADAR%20COPA%202026%20COM%20%C3%81LBUM/album/index.html?origem=radar_copa_album" target="_blank" rel="noopener noreferrer">Abrir álbum</a>
+            <a class="btn btn-outline" href="#disciplinas">Escolher teste</a>
+          </div>
+        </div>
+
+        <div class="radar-copa-regras">
+          <div><b>Acessou o DB ENEM pelo Radar Copa:</b> +1 figurinha</div>
+          <div><b>Acertou metade do simulado:</b> total de 3 figurinhas</div>
+          <div><b>Gabaritou:</b> total de 5 figurinhas</div>
+          <div><b>Comprou qualquer premium:</b> +10 pacotes no álbum</div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="entrada">
       <div class="container">
         <div class="section-head">
@@ -899,7 +1076,7 @@
               <div>Valor: <b>R$ 29,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/reda-o-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/reda-o-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/NsDMCx9" target="_blank">Premium</a>
             </div>
           </article>
@@ -912,7 +1089,7 @@
               <div>Valor: <b>R$ 9,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/revisao-final-enem-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/revisao-final-enem-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/A20iS8u" target="_blank">Premium</a>
             </div>
           </article>
@@ -925,7 +1102,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/atualidades-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/atualidades-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/4yauUSB" target="_blank">Premium</a>
             </div>
           </article>
@@ -938,7 +1115,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/sociologia-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/sociologia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/cVUqErx" target="_blank">Premium</a>
             </div>
           </article>
@@ -951,7 +1128,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/matematica-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/matematica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/SKiUUvs" target="_blank">Premium</a>
             </div>
           </article>
@@ -964,7 +1141,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/fisica-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/fisica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/qTTx3pO" target="_blank">Premium</a>
             </div>
           </article>
@@ -977,7 +1154,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/quimica-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/quimica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/KRVxuLb" target="_blank">Premium</a>
             </div>
           </article>
@@ -990,7 +1167,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/biologia-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/biologia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/RGfxyUn" target="_blank">Premium</a>
             </div>
           </article>
@@ -1003,7 +1180,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/filosofia-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/filosofia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/B6iF4hA" target="_blank">Premium</a>
             </div>
           </article>
@@ -1015,7 +1192,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/historia-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/historia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/h8GJzVE" target="_blank">Premium</a>
             </div>
           </article>
@@ -1028,7 +1205,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/geografia-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/geografia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/64GnsBH" target="_blank">Premium</a>
             </div>
           </article>
@@ -1041,7 +1218,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/portugues-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/portugues-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/QxRaDJy" target="_blank">Premium</a>
             </div>
           </article>
@@ -1054,7 +1231,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/literatura-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/literatura-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/plt5Mut" target="_blank">Premium</a>
             </div>
           </article>
@@ -1067,7 +1244,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/ingles-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/ingles-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/Z1n4Xve" target="_blank">Premium</a>
             </div>
           </article>
@@ -1080,7 +1257,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/espanhol-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/espanhol-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/THSH11k" target="_blank">Premium</a>
             </div>
           </article>
@@ -1093,7 +1270,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/artes-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/artes-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/uHVp2Hl" target="_blank">Premium</a>
             </div>
           </article>
@@ -1106,7 +1283,7 @@
               <div>Valor: <b>R$ 19,90</b></div>
             </div>
             <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/ed-fisica-teste/" target="_blank">Teste</a>
+              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/ed-fisica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
               <a class="btn btn-primary" href="https://pay.kiwify.com.br/TOIMG48" target="_blank">Premium</a>
             </div>
           </article>
@@ -1318,6 +1495,7 @@
 
     atualizarContador();
   </script>
+  <script src="radar-copa-parceiro.js"></script>
 
 </body>
 </html>
