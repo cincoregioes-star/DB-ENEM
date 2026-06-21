@@ -1,1501 +1,784 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>DB ENEM | Data Bank ENEM</title>
-  <meta name="description" content="DB ENEM - Data Bank ENEM com simulados gratuitos, premium por disciplina e acesso vitalício aos 17 simulados digitais." />
-
-  <style>
-    :root{
-      --bg:#060b14;
-      --bg2:#0b1322;
-      --card:#101b2e;
-      --text:#f4f7ff;
-      --muted:#aab7cc;
-      --brand:#ffd339;
-      --brand2:#ffb800;
-      --accent:#1ecbff;
-      --green:#19d07c;
-      --red:#ff5c7a;
-      --line:rgba(255,255,255,.09);
-      --shadow:0 20px 50px rgba(0,0,0,.38);
-      --radius:24px;
-      --max:1240px;
-    }
-
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      background:
-        radial-gradient(circle at top left,rgba(255,211,57,.10),transparent 22%),
-        radial-gradient(circle at top right,rgba(30,203,255,.08),transparent 24%),
-        linear-gradient(180deg,#050910,#08101d 40%,#060b14);
-      color:var(--text);
-      line-height:1.5;
-    }
-
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-    .container{width:min(var(--max),calc(100% - 32px));margin:auto}
-    .section{padding:76px 0}
-
-    .badge{
-      display:inline-flex;
-      padding:10px 15px;
-      border-radius:999px;
-      background:var(--brand);
-      color:#111;
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:14px 20px;
-      border-radius:14px;
-      border:1px solid transparent;
-      font-weight:900;
-      font-size:14px;
-      cursor:pointer;
-      transition:.25s;
-      text-align:center;
-      font-family:inherit;
-    }
-
-    .btn:hover{transform:translateY(-2px)}
-    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#111}
-    .btn-secondary{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13);color:#fff}
-    .btn-outline{background:rgba(30,203,255,.09);border-color:rgba(30,203,255,.25);color:#9beeff}
-    .btn-full{width:100%}
-
-    .topbar{
-      overflow:hidden;
-      border-bottom:1px solid rgba(255,255,255,.07);
-      background:#080d16;
-    }
-
-    .topbar-track{
-      display:inline-block;
-      white-space:nowrap;
-      padding:10px 0;
-      color:var(--brand);
-      font-size:14px;
-      font-weight:900;
-      animation:marquee 24s linear infinite;
-    }
-
-    @keyframes marquee{
-      from{transform:translateX(100%)}
-      to{transform:translateX(-100%)}
-    }
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(5,9,16,.93);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.07);
-    }
-
-    .nav{
-      min-height:82px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-size:22px;
-      font-weight:900;
-    }
-
-    .logo-badge{
-      width:54px;
-      height:54px;
-      display:grid;
-      place-items:center;
-      border-radius:16px;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      color:#050910;
-      font-size:25px;
-      font-weight:950;
-    }
-
-    .logo-text{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-
-    .logo-text strong{
-      font-size:24px;
-      color:#fff;
-      letter-spacing:-.5px;
-    }
-
-    .logo-text strong em{
-      color:var(--brand);
-      font-style:normal;
-    }
-
-    .logo-text small{
-      margin-top:5px;
-      font-size:11px;
-      letter-spacing:2.4px;
-      color:var(--brand);
-      font-weight:900;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:16px;
-      color:var(--muted);
-      font-size:14px;
-      flex-wrap:wrap;
-    }
-
-    .nav-links a:hover{color:#fff}
-    .nav-cta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-
-    .hero{padding:54px 0 30px}
-
-    .hero-box{
-      overflow:hidden;
-      border-radius:32px;
-      border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 25% 18%,rgba(255,211,57,.13),transparent 25%),
-        radial-gradient(circle at 90% 8%,rgba(30,203,255,.10),transparent 24%),
-        linear-gradient(135deg,#0b1322,#07101d);
-      box-shadow:var(--shadow);
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.03fr .97fr;
-      gap:28px;
-      align-items:center;
-      padding:40px;
-    }
-
-    .hero-copy h1{
-      font-size:clamp(38px,5.8vw,74px);
-      line-height:1.02;
-      letter-spacing:-2px;
-      margin:18px 0 16px;
-    }
-
-    .highlight{color:var(--brand)}
-    .hero-copy p{color:var(--muted);font-size:19px;max-width:650px}
-
-    .hero-proof{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin:22px 0 26px;
-    }
-
-    .hero-proof span{
-      padding:10px 13px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      color:#e7eeff;
-      font-size:13px;
-      font-weight:800;
-    }
-
-    .hero-actions{display:flex;flex-wrap:wrap;gap:13px}
-    .hero-visual{position:relative}
-
-    .hero-main-image{
-      width:100%;
-      height:560px;
-      object-fit:cover;
-      object-position:center;
-      border-radius:28px;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-    }
-
-    .hero-card-floating{
-      position:absolute;
-      right:18px;
-      bottom:18px;
-      width:min(92%,365px);
-      padding:18px;
-      border-radius:24px;
-      background:rgba(7,13,23,.94);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 18px 38px rgba(0,0,0,.35);
-    }
-
-    .hero-card-floating h3{
-      font-size:22px;
-      line-height:1.1;
-      margin-bottom:8px;
-    }
-
-    .hero-card-floating p{
-      color:var(--muted);
-      font-size:14px;
-      margin-bottom:14px;
-    }
-        .stats{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .stat-card{
-      padding:18px;
-      border-radius:20px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(255,255,255,.08);
-      text-align:center;
-    }
-
-    .stat-card strong{
-      display:block;
-      color:var(--brand);
-      font-size:26px;
-      line-height:1;
-      margin-bottom:8px;
-    }
-
-    .stat-card span{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .section-head{
-      max-width:900px;
-      margin-bottom:26px;
-    }
-
-    .section-head h2{
-      font-size:clamp(30px,4vw,48px);
-      line-height:1.08;
-      letter-spacing:-1.3px;
-      margin:14px 0 12px;
-    }
-
-    .section-head p{
-      color:var(--muted);
-      font-size:17px;
-    }
-
-    .card{
-      background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-
-    .entry-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-
-    .entry-card{
-      padding:24px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .entry-card.featured{
-      border-color:rgba(255,211,57,.25);
-      transform:translateY(-4px);
-    }
-
-    .entry-label{
-      display:inline-block;
-      margin-bottom:12px;
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-    }
-
-    .label-free{background:rgba(25,208,124,.14);color:#8effc2}
-    .label-premium{background:rgba(255,211,57,.14);color:#ffe173}
-    .label-member{background:rgba(30,203,255,.14);color:#8deaff}
-    .label-vitalicio{background:rgba(255,92,122,.15);color:#ffb1c0}
-
-    .entry-card h3{
-      font-size:25px;
-      line-height:1.08;
-      margin-bottom:8px;
-    }
-
-    .entry-card p{
-      color:var(--muted);
-      font-size:15px;
-      margin-bottom:18px;
-    }
-
-    .entry-list{
-      display:grid;
-      gap:9px;
-      margin-bottom:22px;
-    }
-
-    .entry-list li{
-      list-style:none;
-      color:#eaf0ff;
-      font-size:14px;
-    }
-
-    .entry-list li::before{
-      content:"✓ ";
-      color:var(--green);
-      font-weight:900;
-    }
-
-    .price-box{
-      display:flex;
-      align-items:flex-end;
-      gap:10px;
-      margin-bottom:18px;
-    }
-
-    .price-box strong{
-      font-size:38px;
-      line-height:1;
-      color:var(--brand);
-    }
-
-    .price-box span{
-      color:var(--muted);
-      font-size:13px;
-      padding-bottom:4px;
-    }
-
-    .discipline-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
-
-    .discipline-card{
-      padding:20px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.09);
-      box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      min-height:285px;
-      transition:.25s;
-    }
-
-    .discipline-card:hover{
-      transform:translateY(-4px);
-    }
-
-    .discipline-card strong{
-      font-size:21px;
-      line-height:1.15;
-    }
-
-    .discipline-card span{
-      font-size:14px;
-      color:#eef4ff;
-      line-height:1.45;
-      flex:1;
-    }
-
-    .card-meta{
-      display:grid;
-      gap:6px;
-      padding:12px;
-      border-radius:14px;
-      background:rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.10);
-      font-size:13px;
-    }
-
-    .card-meta b{
-      color:var(--brand);
-    }
-
-    .card-actions{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:9px;
-    }
-
-    .disc-portugues{background:linear-gradient(135deg,#3f006e,#ff00a8)}
-    .disc-literatura{background:linear-gradient(135deg,#4b0d00,#ff7a00)}
-    .disc-ingles{background:linear-gradient(135deg,#001b52,#1f8bff)}
-    .disc-espanhol{background:linear-gradient(135deg,#4a0000,#ff3d3d)}
-    .disc-artes{background:linear-gradient(135deg,#4b0054,#d94dff)}
-    .disc-edfisica{background:linear-gradient(135deg,#00351b,#11c96c)}
-    .disc-matematica{background:linear-gradient(135deg,#1b0061,#7a5cff)}
-    .disc-fisica{background:linear-gradient(135deg,#002b36,#00d2ff)}
-    .disc-quimica{background:linear-gradient(135deg,#3b1f00,#ff9a00)}
-    .disc-biologia{background:linear-gradient(135deg,#00341d,#1ed760)}
-    .disc-historia{background:linear-gradient(135deg,#3d1400,#ff6a00)}
-    .disc-geografia{background:linear-gradient(135deg,#0a2f00,#86d600)}
-    .disc-filosofia{background:linear-gradient(135deg,#25003f,#b84dff)}
-    .disc-sociologia{background:linear-gradient(135deg,#00274d,#00a6ff)}
-    .disc-redacao{background:linear-gradient(135deg,#4a0030,#ff3f92)}
-    .disc-atualidades{background:linear-gradient(135deg,#2a3200,#d0df00)}
-    .disc-revisao{background:linear-gradient(135deg,#003046,#00c2c7)}
-    .disc-vitalicio{background:linear-gradient(135deg,#4a3200,#ffd339);color:#111}
-
-    .disc-vitalicio strong,
-    .disc-vitalicio span,
-    .disc-vitalicio .card-meta,
-    .disc-vitalicio b{
-      color:#111;
-    }
-
-    .dual-layout{
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:24px;
-      align-items:center;
-    }
-
-    .image-frame{
-      overflow:hidden;
-      border-radius:28px;
-      border:1px solid rgba(255,255,255,.09);
-      box-shadow:var(--shadow);
-      background:#0b1220;
-    }
-
-    .image-frame img{
-      width:100%;
-      height:560px;
-      object-fit:cover;
-    }
-
-    .feature-list{
-      display:grid;
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .feature-item{
-      display:flex;
-      gap:14px;
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .feature-icon{
-      width:46px;
-      height:46px;
-      flex:0 0 46px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      color:#111;
-      font-size:20px;
-    }
-
-    .feature-item h3{
-      font-size:18px;
-      margin-bottom:4px;
-    }
-
-    .feature-item p{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .faq{
-      display:grid;
-      gap:12px;
-    }
-
-    .faq-item{
-      padding:18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .faq-item summary{
-      cursor:pointer;
-      font-weight:900;
-      font-size:16px;
-    }
-
-    .faq-item p{
-      color:var(--muted);
-      margin-top:12px;
-      font-size:15px;
-    }
-
-    footer{
-      padding:32px 0 50px;
-      color:var(--muted);
-    }
-
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr .8fr;
-      gap:20px;
-    }
-
-    .footer-col h4{
-      color:#fff;
-      margin-bottom:12px;
-    }
-
-    .footer-links{
-      display:grid;
-      gap:10px;
-      font-size:14px;
-    }
-
-    .modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.72);
-      z-index:200;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-    }
-
-    .modal.active{
-      display:flex;
-    }
-
-    .modal-box{
-      width:min(560px,100%);
-      background:#0b1322;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      padding:24px;
-    }
-
-    .modal-box h2{
-      font-size:28px;
-      line-height:1.1;
-      margin-bottom:8px;
-    }
-
-    .modal-box p{
-      color:var(--muted);
-      font-size:15px;
-      margin-bottom:16px;
-    }
-
-    .form-grid{
-      display:grid;
-      gap:12px;
-    }
-
-    .form-grid input{
-      width:100%;
-      padding:14px;
-      border-radius:13px;
-      border:1px solid rgba(255,255,255,.13);
-      background:rgba(255,255,255,.06);
-      color:#fff;
-      outline:none;
-      font-size:15px;
-    }
-
-    .modal-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .counter-box{
-      margin-top:14px;
-      padding:12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-      color:#dce8ff;
-      font-size:14px;
-    }
-
-
-    .radar-copa-box{
-      padding:58px 0;
-      background:
-        radial-gradient(circle at top left, rgba(255,211,57,.20), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(30,203,255,.14), transparent 28%),
-        linear-gradient(135deg,#06142e,#0b1322 52%,#0f766e);
-      border-top:1px solid rgba(255,211,57,.22);
-      border-bottom:1px solid rgba(255,211,57,.22);
-    }
-
-    .radar-copa-inner{
-      width:min(var(--max),calc(100% - 32px));
-      margin:auto;
-      border:1px solid rgba(255,211,57,.35);
-      border-radius:28px;
-      padding:34px;
-      background:rgba(6,11,20,.72);
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
-      align-items:center;
-    }
-
-    .radar-copa-inner h2{
-      color:var(--brand);
-      font-size:clamp(30px,4vw,48px);
-      line-height:1.05;
-      margin:12px 0;
-    }
-
-    .radar-copa-inner p{
-      color:#dce8ff;
-      font-size:17px;
-      margin-bottom:18px;
-    }
-
-    .radar-copa-regras{
-      display:grid;
-      gap:10px;
-    }
-
-    .radar-copa-regras div{
-      padding:14px;
-      border-radius:16px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:#f4f7ff;
-      font-weight:800;
-    }
-
-    .radar-copa-regras b{
-      color:var(--brand);
-    }
-
-    .radar-copa-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-
-    .radar-copa-actions a{
-      text-decoration:none;
-    }
-
-    @media(max-width:900px){
-      .radar-copa-inner{
-        grid-template-columns:1fr;
-        padding:24px;
-      }
-    }
-
-
-    .mobile-cta{
-      position:fixed;
-      left:12px;
-      right:12px;
-      bottom:12px;
-      z-index:80;
-      display:none;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px;
-      border-radius:18px;
-      background:rgba(7,12,20,.95);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-
-    .mobile-cta small{
-      display:block;
-      color:var(--muted);
-      font-size:12px;
-    }
-
-    .mobile-cta strong{
-      display:block;
-      font-size:15px;
-      line-height:1.2;
-    }
-
-    @media(max-width:1100px){
-      .hero-grid,
-      .entry-grid,
-      .dual-layout,
-      .footer-grid,
-      .stats{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .discipline-grid{
-        grid-template-columns:1fr 1fr;
-      }
-    }
-
-    @media(max-width:760px){
-      .nav{
-        min-height:66px;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-      .nav-cta .btn-secondary{
-        display:none;
-      }
-
-      .hero{
-        padding-top:34px;
-      }
-
-      .hero-grid,
-      .entry-grid,
-      .dual-layout,
-      .discipline-grid,
-      .footer-grid,
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      .hero-grid{
-        padding:24px;
-      }
-
-      .hero-main-image{
-        height:420px;
-      }
-
-      .hero-copy p,
-      .section-head p{
-        font-size:16px;
-      }
-
-      .section{
-        padding:56px 0;
-      }
-
-  
-    .radar-copa-box{
-      padding:58px 0;
-      background:
-        radial-gradient(circle at top left, rgba(255,211,57,.20), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(30,203,255,.14), transparent 28%),
-        linear-gradient(135deg,#06142e,#0b1322 52%,#0f766e);
-      border-top:1px solid rgba(255,211,57,.22);
-      border-bottom:1px solid rgba(255,211,57,.22);
-    }
-
-    .radar-copa-inner{
-      width:min(var(--max),calc(100% - 32px));
-      margin:auto;
-      border:1px solid rgba(255,211,57,.35);
-      border-radius:28px;
-      padding:34px;
-      background:rgba(6,11,20,.72);
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
-      align-items:center;
-    }
-
-    .radar-copa-inner h2{
-      color:var(--brand);
-      font-size:clamp(30px,4vw,48px);
-      line-height:1.05;
-      margin:12px 0;
-    }
-
-    .radar-copa-inner p{
-      color:#dce8ff;
-      font-size:17px;
-      margin-bottom:18px;
-    }
-
-    .radar-copa-regras{
-      display:grid;
-      gap:10px;
-    }
-
-    .radar-copa-regras div{
-      padding:14px;
-      border-radius:16px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:#f4f7ff;
-      font-weight:800;
-    }
-
-    .radar-copa-regras b{
-      color:var(--brand);
-    }
-
-    .radar-copa-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-
-    .radar-copa-actions a{
-      text-decoration:none;
-    }
-
-    @media(max-width:900px){
-      .radar-copa-inner{
-        grid-template-columns:1fr;
-        padding:24px;
-      }
-    }
-
-
-    .mobile-cta{
-        display:flex;
-      }
-
-      body{
-        padding-bottom:92px;
-      }
-
-      .card-actions{
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DB ENEM — Data Bank ENEM</title>
+<meta name="description" content="DB ENEM Data Bank com 17 simulados digitais, testes gratuitos, premium por disciplina e acesso vitalício para treinar para o ENEM 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --bg: #05060a;
+    --bg-2: #0a0d18;
+    --yellow: #ffe100;
+    --yellow-2: #ffb800;
+    --blue: #11b7ff;
+    --cyan: #6effff;
+    --green: #6effc7;
+    --pink: #ff5cf0;
+    --red: #ff5f73;
+    --text: #eef3ff;
+    --muted: #8f98ad;
+    --line: rgba(255,255,255,0.09);
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 16% 8%, rgba(255,225,0,.18), transparent 28%),
+      radial-gradient(circle at 90% 12%, rgba(17,183,255,.18), transparent 26%),
+      radial-gradient(circle at 50% 78%, rgba(255,92,240,.10), transparent 30%),
+      linear-gradient(180deg, #05060a 0%, #090d18 42%, #05060a 100%);
+  }
+
+  a { color: inherit; text-decoration: none; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .text-muted { color: var(--muted); }
+
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    background-image:
+      linear-gradient(rgba(255,225,0,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,183,255,0.06) 1px, transparent 1px);
+    background-size: 58px 58px;
+    mask-image: radial-gradient(ellipse at center, black 28%, transparent 78%);
+    pointer-events: none;
+  }
+
+  .glow {
+    position: fixed;
+    border-radius: 999px;
+    filter: blur(120px);
+    opacity: .42;
+    pointer-events: none;
+    z-index: -3;
+  }
+  .glow.g1 { width: 520px; height: 520px; background: var(--yellow); top: -160px; left: -150px; }
+  .glow.g2 { width: 520px; height: 520px; background: var(--blue); top: 10%; right: -180px; }
+  .glow.g3 { width: 430px; height: 430px; background: var(--pink); bottom: -120px; left: 32%; opacity: .25; }
+
+  .gradient-text {
+    background: linear-gradient(120deg, #ffffff 0%, var(--yellow) 36%, var(--blue) 70%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-yellow {
+    background: linear-gradient(120deg, var(--yellow) 0%, var(--yellow-2) 48%, #fff6a0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,225,0,.36);
+    box-shadow: 0 24px 80px rgba(255,225,0,.08), 0 10px 36px rgba(0,0,0,.28);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(255,225,0,0.14), transparent 42%);
+    opacity: 0;
+    transition: opacity .35s ease;
+    pointer-events: none;
+  }
+  .card:hover::before { opacity: 1; }
+  .card.blue:hover { border-color: rgba(17,183,255,.38); }
+  .card.blue::before { background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(17,183,255,0.13), transparent 42%); }
+  .card.green:hover { border-color: rgba(110,255,199,.38); }
+  .card.green::before { background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(110,255,199,0.13), transparent 42%); }
+  .card.red:hover { border-color: rgba(255,95,115,.38); }
+  .card.red::before { background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(255,95,115,0.13), transparent 42%); }
+
+  .btn-primary {
+    background: linear-gradient(120deg, var(--yellow), var(--yellow-2));
+    color: #080a10;
+    font-weight: 800;
+    border-radius: 999px;
+    padding: 14px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    box-shadow: 0 14px 44px -12px rgba(255,225,0,.62);
+  }
+  .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 20px 54px -12px rgba(255,225,0,.72); }
+
+  .btn-blue {
+    background: linear-gradient(120deg, var(--blue), #5b8bff);
+    color: #05060a;
+    font-weight: 800;
+    border-radius: 999px;
+    padding: 14px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: transform .25s ease, box-shadow .25s ease;
+    box-shadow: 0 14px 44px -12px rgba(17,183,255,.56);
+  }
+  .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 20px 54px -12px rgba(17,183,255,.70); }
+
+  .btn-ghost {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 14px 25px;
+    color: var(--text);
+    transition: border-color .25s, background .25s, transform .25s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    background: rgba(255,255,255,.025);
+  }
+  .btn-ghost:hover { border-color: rgba(255,225,0,.48); background: rgba(255,225,0,.06); transform: translateY(-2px); }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,225,0,.25);
+    background: rgba(255,225,0,.08);
+    color: #fff4a3;
+    border-radius: 999px;
+    padding: 9px 13px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  .nav-blur {
+    background: rgba(5,6,10,.72);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    color: #05060a;
+    background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
+    font-weight: 900;
+    font-size: 21px;
+    box-shadow: 0 0 32px rgba(255,225,0,.28);
+  }
+
+  .hero-frame {
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 22% 12%, rgba(255,225,0,.14), transparent 28%),
+      radial-gradient(circle at 86% 18%, rgba(17,183,255,.14), transparent 26%),
+      linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+    box-shadow: 0 34px 120px rgba(0,0,0,.35);
+  }
+
+  .glass {
+    background: rgba(8,11,20,.72);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(18px);
+  }
+
+  .ad-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 30px 90px rgba(0,0,0,.45);
+  }
+
+  .teacher-image {
+    width: 100%;
+    height: 100%;
+    min-height: 440px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+
+  .marquee { display: flex; overflow: hidden; gap: 64px; }
+  .marquee-track { display: flex; gap: 64px; animation: scroll 30s linear infinite; flex-shrink: 0; white-space: nowrap; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+  .stat-number { font-family: 'JetBrains Mono', monospace; }
+
+  .subject-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 330px;
+  }
+
+  .subject-top {
+    flex: 1;
+  }
+
+  .filter-btn {
+    border: 1px solid var(--line);
+    color: var(--text);
+    background: rgba(255,255,255,.03);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 700;
+    transition: .25s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: rgba(255,225,0,.12);
+    border-color: rgba(255,225,0,.45);
+    color: #fff0a0;
+  }
+
+  input, textarea {
+    font-family: inherit;
+  }
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(0,0,0,.72);
+  }
+  .modal.active { display: flex; }
+
+  .mobile-cta {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .desktop-nav { display: none; }
+    .mobile-cta {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-radius: 22px;
+      padding: 12px;
+      background: rgba(8,11,20,.95);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 20px 70px rgba(0,0,0,.45);
+      backdrop-filter: blur(16px);
+    }
+    body { padding-bottom: 94px; }
+    .ad-image { max-height: 560px; }
+  }
+</style>
 </head>
 
 <body>
+<div class="bg-grid"></div>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="glow g3"></div>
 
-  <div class="topbar">
-    <div class="topbar-track">
-      🔥 DB ENEM • DATA BANK • 17 simulados digitais • teste grátis • premium por disciplina • acesso vitalício completo •
-    </div>
-  </div>
-
-  <header>
-    <div class="container nav">
-      <a href="#top" class="logo">
-        <span class="logo-badge">DB</span>
-        <span class="logo-text">
-          <strong>DB <em>ENEM</em></strong>
-          <small>DATA BANK</small>
+<header class="fixed top-0 left-0 right-0 z-50 nav-blur">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="h-20 flex items-center justify-between gap-4">
+      <a href="#topo" class="flex items-center gap-3">
+        <span class="logo-mark">DB</span>
+        <span class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight">DB <span class="gradient-yellow">ENEM</span></span>
+          <span class="block mono text-[11px] tracking-[.28em] text-muted uppercase">Data Bank</span>
         </span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#entrada">Entradas</a>
-        <a href="#disciplinas">Simulados</a>
-        <a href="#metodo">Método</a>
-        <a href="#faq">FAQ</a>
+      <nav class="desktop-nav hidden lg:flex items-center gap-7 text-sm font-medium text-muted">
+        <a class="hover:text-white transition" href="#problema">Problema</a>
+        <a class="hover:text-white transition" href="#entradas">Acessos</a>
+        <a class="hover:text-white transition" href="#simulados">Simulados</a>
+        <a class="hover:text-white transition" href="#metodo">Método</a>
+        <a class="hover:text-white transition" href="#radar-copa">Radar Copa</a>
+        <a class="hover:text-white transition" href="#faq">FAQ</a>
       </nav>
 
-      <div class="nav-cta">
-        <button class="btn btn-secondary" onclick="abrirCadastro('entrar')">Entrar</button>
-        <button class="btn btn-outline" onclick="abrirCadastro('cadastrar')">Cadastrar</button>
-        <a class="btn btn-primary" href="https://pay.kiwify.com.br/ai09spZ" target="_blank">Vitalício 17 simulados</a>
+      <div class="flex items-center gap-2">
+        <button class="hidden sm:inline-flex btn-ghost !py-3 !px-5" onclick="abrirCadastro('entrar')">Entrar</button>
+        <a class="btn-primary !py-3 !px-5" href="https://pay.kiwify.com.br/ai09spZ" target="_blank" rel="noopener">Vitalício</a>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-box">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <span class="badge">ENEM 2026</span>
-              <h1>DB ENEM para treinar melhor e aumentar seus acertos.</h1>
-              <p>Data Bank ENEM com simulados por disciplina, teste grátis, premium individual e acesso vitalício aos 17 simulados digitais.</p>
-
-              <div class="hero-proof">
-                <span>17 simulados digitais</span>
-                <span>Teste grátis</span>
-                <span>Premium por disciplina</span>
-                <span>Acesso vitalício</span>
-              </div>
-
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="https://pay.kiwify.com.br/ai09spZ" target="_blank">Vitalício - acesso aos 17 simulados digitais</a>
-                <a class="btn btn-outline" href="#disciplinas">Ver simulados</a>
-                <button class="btn btn-secondary" onclick="abrirCadastro('cadastrar')">Cadastrar aluno</button>
-              </div>
-            </div>
-
-            <div class="hero-visual">
-              <img class="hero-main-image" src="professor-geografia-enem-aula.jpg" alt="Professor explicando conteúdo para o ENEM" />
-
-              <div class="hero-card-floating">
-                <h3>Comece pelo teste grátis</h3>
-                <p>Escolha uma disciplina, pratique e avance para o premium.</p>
-                <a class="btn btn-primary btn-full" href="#disciplinas">Escolher simulado</a>
-              </div>
-            </div>
-          </div>
-        </div>
-                <div class="stats">
-          <div class="stat-card">
-            <strong>17</strong>
-            <span>simulados digitais</span>
-          </div>
-
-          <div class="stat-card">
-            <strong>R$ 19,90</strong>
-            <span>maioria premium</span>
-          </div>
-
-          <div class="stat-card">
-            <strong>R$ 99,90</strong>
-            <span>acesso vitalício</span>
-          </div>
-
-          <div class="stat-card">
-            <strong id="totalCadastrosTopo">0</strong>
-            <span>cadastros</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="radar-copa-box" id="radar-copa-recompensa">
-      <div class="radar-copa-inner">
+<main id="topo" class="pt-28">
+  <section class="px-4 sm:px-6 lg:px-8 pb-10 lg:pb-16">
+    <div class="max-w-7xl mx-auto hero-frame rounded-[34px] overflow-hidden">
+      <div class="grid lg:grid-cols-[1.04fr_.96fr] gap-8 lg:gap-10 items-center p-5 sm:p-8 lg:p-12">
         <div>
-          <span class="badge">🎁 Radar Copa 2026</span>
-          <h2>Ganhe figurinhas do álbum estudando no DB ENEM</h2>
-          <p>
-            Quem chega pelo Radar Copa pode ganhar recompensas no álbum
-            <strong>História em Campo 2026</strong>. Faça testes, avance nos simulados
-            e volte ao álbum para verificar as recompensas.
+          <span class="pill">ENEM 2026 • 17 simulados digitais</span>
+          <h1 class="mt-7 text-5xl sm:text-7xl lg:text-[90px] font-bold leading-[.88] tracking-[-.07em]">
+            Treine para o <span class="gradient-text">ENEM</span> com direção.
+          </h1>
+          <p class="mt-7 text-lg sm:text-xl text-muted max-w-2xl leading-relaxed">
+            O <strong class="text-white">DB ENEM Data Bank</strong> organiza simulados por disciplina, testes gratuitos, premium individual e acesso vitalício para transformar treino em desempenho.
           </p>
 
-          <div class="radar-copa-actions">
-            <a class="btn btn-primary" href="https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?origem=radar_copa_album" target="_blank" rel="noopener noreferrer">Abrir álbum</a>
-            <a class="btn btn-outline" href="#disciplinas">Escolher teste</a>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-7">
+            <div class="card p-4">
+              <div class="stat-number text-3xl font-bold text-[#ffe100]">17</div>
+              <div class="text-sm text-muted">simulados digitais</div>
+            </div>
+            <div class="card blue p-4">
+              <div class="stat-number text-3xl font-bold text-[#11b7ff]">300</div>
+              <div class="text-sm text-muted">questões de redação</div>
+            </div>
+            <div class="card green p-4">
+              <div class="stat-number text-3xl font-bold text-[#6effc7]">R$19,90</div>
+              <div class="text-sm text-muted">maioria premium</div>
+            </div>
+            <div class="card p-4">
+              <div class="stat-number text-3xl font-bold text-[#ffe100]">R$99,90</div>
+              <div class="text-sm text-muted">pacote vitalício</div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+            <a class="btn-primary" href="https://pay.kiwify.com.br/ai09spZ" target="_blank" rel="noopener">Acesso vitalício aos 17 simulados →</a>
+            <a class="btn-blue" href="#simulados">Ver testes grátis</a>
+            <button class="btn-ghost" onclick="abrirCadastro('cadastrar')">Cadastrar aluno</button>
           </div>
         </div>
 
-        <div class="radar-copa-regras">
-          <div><b>Acessou o DB ENEM pelo Radar Copa:</b> +1 figurinha</div>
-          <div><b>Acertou metade do simulado:</b> total de 3 figurinhas</div>
-          <div><b>Gabaritou:</b> total de 5 figurinhas</div>
-          <div><b>Comprou qualquer premium:</b> +10 pacotes no álbum</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="entrada">
-      <div class="container">
-        <div class="section-head">
-          <span class="badge">Entradas</span>
-          <h2>Escolha como acessar</h2>
-        </div>
-
-        <div class="entry-grid">
-          <article class="card entry-card">
-            <span class="entry-label label-free">GRÁTIS</span>
-            <h3>Testar simulados</h3>
-            <p>Escolha uma disciplina e comece pela versão gratuita.</p>
-            <ul class="entry-list">
-              <li>Sem pagamento</li>
-              <li>Versão reduzida</li>
-            </ul>
-            <a class="btn btn-outline btn-full" href="#disciplinas">Ver testes</a>
-          </article>
-
-          <article class="card entry-card featured">
-            <span class="entry-label label-premium">PREMIUM</span>
-            <h3>Premium por disciplina</h3>
-            <p>Escolha o simulado premium que deseja liberar.</p>
-            <div class="price-box">
-              <strong>R$ 19,90</strong>
-              <span>maioria</span>
-            </div>
-            <a class="btn btn-primary btn-full" href="#disciplinas">Escolher premium</a>
-          </article>
-
-          <article class="card entry-card">
-            <span class="entry-label label-vitalicio">VITALÍCIO</span>
-            <h3>17 simulados digitais</h3>
-            <p>Acesso vitalício ao pacote completo DB ENEM.</p>
-            <div class="price-box">
-              <strong>R$ 99,90</strong>
-            </div>
-            <a class="btn btn-primary btn-full" href="https://pay.kiwify.com.br/ai09spZ" target="_blank">Comprar vitalício</a>
-          </article>
-
-          <article class="card entry-card">
-            <span class="entry-label label-member">ALUNO</span>
-            <h3>Entrar / Cadastrar</h3>
-            <p>Área simples para registro de interessados.</p>
-            <button class="btn btn-secondary btn-full" onclick="abrirCadastro('entrar')">Acessar</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="disciplinas">
-      <div class="container">
-        <div class="section-head">
-          <span class="badge">Simulados</span>
-          <h2>Escolha sua disciplina</h2>
-        </div>
-
-        <div class="discipline-grid">
-
-          <article class="discipline-card disc-redacao">
-            <strong>Redação</strong>
-            <span>Simulado Redação ENEM Premium – 300 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>300 questões</b></div>
-              <div>Valor: <b>R$ 29,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/reda-o-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/NsDMCx9" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-revisao">
-            <strong>Revisão Final</strong>
-            <span>Simulado Revisão Final ENEM Premium – 50 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>50 questões</b></div>
-              <div>Valor: <b>R$ 9,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/revisao-final-enem-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/A20iS8u" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-atualidades">
-            <strong>Atualidades</strong>
-            <span>Simulado Atualidades ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/atualidades-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/4yauUSB" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-sociologia">
-            <strong>Sociologia</strong>
-            <span>Simulado Sociologia ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/sociologia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/cVUqErx" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-matematica">
-            <strong>Matemática</strong>
-            <span>Simulado Matemática ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/matematica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/SKiUUvs" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-fisica">
-            <strong>Física</strong>
-            <span>Simulado Física ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/fisica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/qTTx3pO" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-quimica">
-            <strong>Química</strong>
-            <span>Simulado Química ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/quimica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/KRVxuLb" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-biologia">
-            <strong>Biologia</strong>
-            <span>Simulado Biologia ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/biologia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/RGfxyUn" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-filosofia">
-            <strong>Filosofia</strong>
-            <span>Simulado Filosofia ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/filosofia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/B6iF4hA" target="_blank">Premium</a>
-            </div>
-          </article>
-                    <article class="discipline-card disc-historia">
-            <strong>História</strong>
-            <span>Simulado História ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/historia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/h8GJzVE" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-geografia">
-            <strong>Geografia</strong>
-            <span>Simulado Geografia ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/geografia-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/64GnsBH" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-portugues">
-            <strong>Português</strong>
-            <span>Simulado Português ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/portugues-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/QxRaDJy" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-literatura">
-            <strong>Literatura</strong>
-            <span>Simulado Literatura ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/literatura-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/plt5Mut" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-ingles">
-            <strong>Inglês</strong>
-            <span>Simulado Inglês ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/ingles-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/Z1n4Xve" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-espanhol">
-            <strong>Espanhol</strong>
-            <span>Simulado Espanhol ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/espanhol-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/THSH11k" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-artes">
-            <strong>Artes</strong>
-            <span>Simulado Artes ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/artes-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/uHVp2Hl" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-edfisica">
-            <strong>Educação Física</strong>
-            <span>Simulado Educação Física ENEM Premium – 200 Questões</span>
-            <div class="card-meta">
-              <div>Premium: <b>200 questões</b></div>
-              <div>Valor: <b>R$ 19,90</b></div>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-secondary" href="https://cincoregioes-star.github.io/ed-fisica-teste/?origem=radar_copa_album" target="_blank">Teste</a>
-              <a class="btn btn-primary" href="https://pay.kiwify.com.br/TOIMG48" target="_blank">Premium</a>
-            </div>
-          </article>
-
-          <article class="discipline-card disc-vitalicio">
-            <strong>Vitalício DB ENEM</strong>
-            <span>Acesso a todos os 17 simulados digitais</span>
-            <div class="card-meta">
-              <div>Pacote: <b>17 simulados digitais</b></div>
-              <div>Valor: <b>R$ 99,90</b></div>
-            </div>
-            <a class="btn btn-primary btn-full" href="https://pay.kiwify.com.br/ai09spZ" target="_blank">
-              Comprar acesso vitalício
-            </a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="metodo">
-      <div class="container">
-        <div class="dual-layout">
-
-          <div class="image-frame">
-            <img src="professor-geografia-enem-aula.jpg" alt="Professor DB ENEM">
+        <div class="relative min-h-[580px] sm:min-h-[680px] lg:min-h-[720px]">
+          <div class="absolute inset-0 rounded-[32px] bg-gradient-to-br from-yellow-300/20 via-blue-500/10 to-fuchsia-500/20 blur-2xl"></div>
+          <img class="ad-image relative z-10" src="db-enem-anuncio.jpg" alt="DB ENEM 2026 - simulados digitais" />
+          <div class="absolute z-20 left-4 right-4 bottom-4 sm:left-auto sm:right-5 sm:bottom-5 sm:w-[360px] glass rounded-3xl p-5">
+            <div class="mono text-xs text-[#ffe100] uppercase tracking-[.22em]">Comece agora</div>
+            <h2 class="text-2xl font-bold mt-2 leading-tight">Teste grátis + upgrade premium</h2>
+            <p class="text-muted mt-2 text-sm leading-relaxed">Escolha uma disciplina, pratique e avance para o pacote completo quando quiser.</p>
+            <a class="btn-primary w-full mt-4" href="#simulados">Escolher simulado</a>
           </div>
-
-          <div>
-            <div class="section-head">
-              <span class="badge">Método</span>
-              <h2>Treino direto para o ENEM</h2>
-              <p>Escolha a disciplina, faça o teste e avance para o premium ou vitalício.</p>
-            </div>
-
-            <div class="feature-list">
-              <div class="feature-item">
-                <div class="feature-icon">🎯</div>
-                <div>
-                  <h3>Foco nas provas</h3>
-                  <p>Simulados organizados por área para facilitar sua rotina.</p>
-                </div>
-              </div>
-
-              <div class="feature-item">
-                <div class="feature-icon">⚡</div>
-                <div>
-                  <h3>Prática constante</h3>
-                  <p>Teste grátis, premium por disciplina e pacote vitalício.</p>
-                </div>
-              </div>
-
-              <div class="feature-item">
-                <div class="feature-icon">📚</div>
-                <div>
-                  <h3>17 simulados digitais</h3>
-                  <p>Acesso organizado para treinar com mais direção.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
         </div>
       </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <span class="badge">FAQ</span>
-          <h2>Dúvidas rápidas</h2>
-        </div>
-
-        <div class="faq">
-          <details class="faq-item" open>
-            <summary>O que é o acesso vitalício?</summary>
-            <p>É o acesso aos 17 simulados digitais do DB ENEM por pagamento único.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Posso comprar só uma disciplina?</summary>
-            <p>Sim. Cada card possui o botão Premium da disciplina correspondente.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Posso testar antes?</summary>
-            <p>Sim. Cada disciplina possui botão de teste gratuito.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-
-      <div class="footer-col">
-        <div class="logo">
-          <span class="logo-badge">DB</span>
-          <span class="logo-text">
-            <strong>DB <em>ENEM</em></strong>
-            <small>DATA BANK</small>
-          </span>
-        </div>
-        <p>DB ENEM - Data Bank ENEM</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Simulados</h4>
-        <div class="footer-links">
-          <a href="#disciplinas">Ver simulados</a>
-          <a href="https://pay.kiwify.com.br/ai09spZ" target="_blank">Vitalício 17 simulados</a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>Acesso</h4>
-        <div class="footer-links">
-          <a href="#" onclick="abrirCadastro('entrar')">Entrar</a>
-          <a href="#" onclick="abrirCadastro('cadastrar')">Cadastrar</a>
-        </div>
-      </div>
-
     </div>
-  </footer>
+  </section>
 
-  <div class="mobile-cta">
+  <section class="border-y border-white/10 bg-black/20 py-4 overflow-hidden">
+    <div class="marquee mono text-sm font-bold text-muted uppercase tracking-[.18em]">
+      <div class="marquee-track">
+        <span><b class="text-[#ffe100]">DB ENEM</b> • Data Bank • 17 simulados digitais • teste grátis • premium por disciplina • acesso vitalício • redação com 300 questões • ENEM 2026 •</span>
+        <span><b class="text-[#ffe100]">DB ENEM</b> • Data Bank • 17 simulados digitais • teste grátis • premium por disciplina • acesso vitalício • redação com 300 questões • ENEM 2026 •</span>
+      </div>
+      <div class="marquee-track" aria-hidden="true">
+        <span><b class="text-[#ffe100]">DB ENEM</b> • Data Bank • 17 simulados digitais • teste grátis • premium por disciplina • acesso vitalício • redação com 300 questões • ENEM 2026 •</span>
+        <span><b class="text-[#ffe100]">DB ENEM</b> • Data Bank • 17 simulados digitais • teste grátis • premium por disciplina • acesso vitalício • redação com 300 questões • ENEM 2026 •</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="problema" class="px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="pill">O problema</span>
+        <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.055em] leading-none mt-5">Estudar sem organização derruba o rendimento.</h2>
+        <p class="text-muted text-lg leading-relaxed mt-5">Sem treino por área, revisão orientada e rotina de questões, o aluno perde tempo, acumula dúvidas e chega à prova sem clareza do que precisa melhorar.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article class="card red p-6">
+          <div class="text-4xl mb-5">⚠️</div>
+          <h3 class="text-2xl font-bold">Treino sem direção</h3>
+          <p class="text-muted mt-3 leading-relaxed">O estudante resolve questões aleatórias e não identifica quais áreas precisam de mais atenção.</p>
+        </article>
+        <article class="card red p-6">
+          <div class="text-4xl mb-5">⏳</div>
+          <h3 class="text-2xl font-bold">Tempo desperdiçado</h3>
+          <p class="text-muted mt-3 leading-relaxed">Sem simulados organizados, a preparação fica lenta e pouco objetiva.</p>
+        </article>
+        <article class="card red p-6">
+          <div class="text-4xl mb-5">📉</div>
+          <h3 class="text-2xl font-bold">Baixa evolução</h3>
+          <p class="text-muted mt-3 leading-relaxed">Falta prática constante para transformar conteúdo estudado em acertos reais.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="entradas" class="px-4 sm:px-6 lg:px-8 py-20 lg:py-28 bg-white/[.018] border-y border-white/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+        <div class="max-w-3xl">
+          <span class="pill">Acessos</span>
+          <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.055em] leading-none mt-5">Escolha como começar.</h2>
+          <p class="text-muted text-lg leading-relaxed mt-5">Teste primeiro, compre uma disciplina premium ou libere o pacote completo com os 17 simulados digitais.</p>
+        </div>
+        <a class="btn-primary" href="https://pay.kiwify.com.br/ai09spZ" target="_blank" rel="noopener">Comprar vitalício</a>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <article class="card green p-6">
+          <div class="mono text-xs text-[#6effc7] uppercase tracking-[.22em]">Grátis</div>
+          <h3 class="text-3xl font-bold mt-4 leading-tight">Teste por disciplina</h3>
+          <p class="text-muted mt-3 leading-relaxed">Acesse a versão gratuita e experimente a estrutura do simulado.</p>
+          <a class="btn-ghost w-full mt-8" href="#simulados">Ver testes</a>
+        </article>
+        <article class="card p-6 border-yellow-300/25">
+          <div class="mono text-xs text-[#ffe100] uppercase tracking-[.22em]">Premium</div>
+          <h3 class="text-3xl font-bold mt-4 leading-tight">Premium individual</h3>
+          <p class="text-muted mt-3 leading-relaxed">Libere apenas a disciplina que você deseja treinar com mais profundidade.</p>
+          <div class="text-4xl font-bold text-[#ffe100] mt-6">R$ 19,90</div>
+          <a class="btn-primary w-full mt-5" href="#simulados">Escolher premium</a>
+        </article>
+        <article class="card blue p-6">
+          <div class="mono text-xs text-[#11b7ff] uppercase tracking-[.22em]">Completo</div>
+          <h3 class="text-3xl font-bold mt-4 leading-tight">17 simulados digitais</h3>
+          <p class="text-muted mt-3 leading-relaxed">Pacote completo com acesso vitalício para estudar quando quiser.</p>
+          <div class="text-4xl font-bold text-[#11b7ff] mt-6">R$ 99,90</div>
+          <a class="btn-blue w-full mt-5" href="https://pay.kiwify.com.br/ai09spZ" target="_blank" rel="noopener">Liberar pacote</a>
+        </article>
+        <article class="card p-6">
+          <div class="mono text-xs text-[#ff5cf0] uppercase tracking-[.22em]">Aluno</div>
+          <h3 class="text-3xl font-bold mt-4 leading-tight">Entrar ou cadastrar</h3>
+          <p class="text-muted mt-3 leading-relaxed">Área simples para registro local de interessados no DB ENEM.</p>
+          <button class="btn-ghost w-full mt-8" onclick="abrirCadastro('cadastrar')">Cadastrar aluno</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="simulados" class="px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-4xl mb-10">
+        <span class="pill">Simulados</span>
+        <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.055em] leading-none mt-5">17 áreas para treinar com foco.</h2>
+        <p class="text-muted text-lg leading-relaxed mt-5">Use os filtros para encontrar a disciplina, testar grátis ou abrir o premium correspondente.</p>
+      </div>
+
+      <div class="card p-4 sm:p-5 mb-7">
+        <div class="flex flex-col lg:flex-row gap-4 lg:items-center justify-between">
+          <div class="flex gap-2 overflow-x-auto pb-1" id="filtros">
+            <button class="filter-btn active" data-filter="todos">Todos</button>
+            <button class="filter-btn" data-filter="linguagens">Linguagens</button>
+            <button class="filter-btn" data-filter="humanas">Humanas</button>
+            <button class="filter-btn" data-filter="natureza">Natureza</button>
+            <button class="filter-btn" data-filter="matematica">Matemática</button>
+            <button class="filter-btn" data-filter="redacao">Redação</button>
+          </div>
+          <input id="busca" class="w-full lg:w-[330px] rounded-full border border-white/10 bg-white/[.04] px-5 py-3 text-white outline-none focus:border-yellow-300/50" placeholder="Buscar disciplina..." />
+        </div>
+      </div>
+
+      <div id="disciplinasGrid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+    </div>
+  </section>
+
+  <section id="metodo" class="px-4 sm:px-6 lg:px-8 py-20 lg:py-28 bg-white/[.018] border-y border-white/10">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-[.95fr_1.05fr] gap-8 lg:gap-12 items-center">
+      <div class="relative">
+        <div class="absolute inset-0 rounded-[32px] bg-gradient-to-br from-yellow-300/15 via-blue-500/10 to-fuchsia-500/15 blur-2xl"></div>
+        <img class="teacher-image relative z-10" src="professor-geografia-enem-aula.jpg" alt="Aula de geografia para o ENEM" />
+      </div>
+      <div>
+        <span class="pill">Método</span>
+        <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.055em] leading-none mt-5">Treino organizado, simples e direto.</h2>
+        <p class="text-muted text-lg leading-relaxed mt-5">O DB ENEM funciona como um banco de treino: escolha a disciplina, comece pelo teste, avance para o premium e use o pacote vitalício para manter rotina constante.</p>
+        <div class="grid gap-4 mt-8">
+          <div class="card green p-5 flex gap-4 items-start">
+            <div class="text-3xl">🎯</div>
+            <div><h3 class="text-xl font-bold">Foco por área</h3><p class="text-muted mt-1">Linguagens, Humanas, Natureza, Matemática, Redação e Revisão.</p></div>
+          </div>
+          <div class="card blue p-5 flex gap-4 items-start">
+            <div class="text-3xl">⚡</div>
+            <div><h3 class="text-xl font-bold">Prática constante</h3><p class="text-muted mt-1">O aluno treina mais questões e ganha repertório para a prova.</p></div>
+          </div>
+          <div class="card p-5 flex gap-4 items-start">
+            <div class="text-3xl">🚀</div>
+            <div><h3 class="text-xl font-bold">Acesso vitalício</h3><p class="text-muted mt-1">Pagamento único para liberar os 17 simulados digitais completos.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="radar-copa" class="px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto hero-frame rounded-[34px] overflow-hidden">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-6 p-6 sm:p-8 lg:p-12 items-center">
+        <div>
+          <span class="pill">🎁 Radar Copa 2026</span>
+          <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.055em] leading-none mt-5">Ganhe figurinhas estudando no DB ENEM.</h2>
+          <p class="text-muted text-lg leading-relaxed mt-5">Quem chega pelo Radar Copa pode ganhar recompensas no álbum História em Campo 2026. Faça testes, avance nos simulados e volte ao álbum para verificar as recompensas.</p>
+          <div class="mt-7 flex flex-col sm:flex-row gap-3">
+            <a class="btn-primary" href="https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?origem=radar_copa_album" target="_blank" rel="noopener">Abrir álbum</a>
+            <a class="btn-ghost" href="#simulados">Escolher teste</a>
+          </div>
+        </div>
+        <div class="grid gap-4">
+          <div class="card p-5"><b class="text-[#ffe100]">Acessou pelo Radar Copa:</b> +1 figurinha</div>
+          <div class="card green p-5"><b class="text-[#6effc7]">Acertou metade do simulado:</b> total de 3 figurinhas</div>
+          <div class="card blue p-5"><b class="text-[#11b7ff]">Gabaritou:</b> total de 5 figurinhas</div>
+          <div class="card p-5"><b class="text-[#ffe100]">Comprou qualquer premium:</b> +10 pacotes no álbum</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="px-4 sm:px-6 lg:px-8 py-20 lg:py-28 bg-white/[.018] border-y border-white/10">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="pill">FAQ</span>
+        <h2 class="text-4xl sm:text-6xl font-bold tracking-[-.055em] leading-none mt-5">Dúvidas rápidas</h2>
+      </div>
+      <div class="grid gap-4">
+        <details class="card p-6" open>
+          <summary class="text-xl font-bold cursor-pointer">O que é o acesso vitalício?</summary>
+          <p class="text-muted mt-4 leading-relaxed">É o acesso aos 17 simulados digitais do DB ENEM por pagamento único.</p>
+        </details>
+        <details class="card p-6">
+          <summary class="text-xl font-bold cursor-pointer">Posso comprar só uma disciplina?</summary>
+          <p class="text-muted mt-4 leading-relaxed">Sim. Cada card possui o botão Premium da disciplina correspondente.</p>
+        </details>
+        <details class="card p-6">
+          <summary class="text-xl font-bold cursor-pointer">Posso testar antes?</summary>
+          <p class="text-muted mt-4 leading-relaxed">Sim. Cada disciplina possui botão de teste gratuito.</p>
+        </details>
+        <details class="card p-6">
+          <summary class="text-xl font-bold cursor-pointer">Onde compro o pacote completo?</summary>
+          <p class="text-muted mt-4 leading-relaxed">No botão “Acesso vitalício aos 17 simulados digitais”, direcionado para a página de pagamento da Kiwify.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-start">
     <div>
-      <small>DB ENEM</small>
-      <strong>Vitalício 17 simulados digitais</strong>
+      <div class="flex items-center gap-3">
+        <span class="logo-mark">DB</span>
+        <span class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight">DB <span class="gradient-yellow">ENEM</span></span>
+          <span class="block mono text-[11px] tracking-[.28em] text-muted uppercase">Data Bank</span>
+        </span>
+      </div>
+      <p class="text-muted mt-4 leading-relaxed">Simulados digitais para treinar melhor para o ENEM.</p>
     </div>
-    <a class="btn btn-primary" href="https://pay.kiwify.com.br/ai09spZ" target="_blank">Comprar</a>
-  </div>
-
-  <div class="modal" id="modalCadastro">
-    <div class="modal-box">
-      <h2 id="tituloModal">Cadastro</h2>
-      <p>Preencha seus dados</p>
-
-      <div class="form-grid">
-        <input type="text" id="nome" placeholder="Nome">
-        <input type="email" id="email" placeholder="Email">
-      </div>
-
-      <div class="modal-actions">
-        <button class="btn btn-primary" onclick="salvarCadastro()">Salvar</button>
-        <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
-      </div>
-
-      <div class="counter-box">
-        Total cadastros: <b id="totalCadastros">0</b>
+    <div>
+      <h3 class="font-bold mb-4">Acessos</h3>
+      <div class="grid gap-3 text-muted">
+        <a class="hover:text-white" href="#simulados">Ver simulados</a>
+        <a class="hover:text-white" href="https://pay.kiwify.com.br/ai09spZ" target="_blank" rel="noopener">Comprar vitalício</a>
+        <a class="hover:text-white" href="https://cincoregioes-star.github.io/DB-ENEM/" target="_blank" rel="noopener">Página oficial</a>
       </div>
     </div>
+    <div>
+      <h3 class="font-bold mb-4">Aluno</h3>
+      <div class="grid gap-3 text-muted">
+        <button class="text-left hover:text-white" onclick="abrirCadastro('entrar')">Entrar</button>
+        <button class="text-left hover:text-white" onclick="abrirCadastro('cadastrar')">Cadastrar</button>
+        <span>Total cadastros: <b id="totalCadastrosRodape" class="text-[#ffe100]">0</b></span>
+      </div>
+    </div>
   </div>
+</footer>
 
-  <script>
-    function abrirCadastro(tipo){
-      document.getElementById('modalCadastro').classList.add('active');
-      document.getElementById('tituloModal').innerText = tipo === 'entrar' ? 'Entrar' : 'Cadastrar';
-    }
+<div class="mobile-cta">
+  <div>
+    <div class="mono text-[11px] text-muted uppercase tracking-[.18em]">DB ENEM</div>
+    <div class="font-bold leading-tight">Vitalício 17 simulados</div>
+  </div>
+  <a class="btn-primary !py-3 !px-5" href="https://pay.kiwify.com.br/ai09spZ" target="_blank" rel="noopener">Comprar</a>
+</div>
 
-    function fecharModal(){
-      document.getElementById('modalCadastro').classList.remove('active');
-    }
+<div class="modal" id="modalCadastro" aria-hidden="true">
+  <div class="card max-w-xl w-full p-6 sm:p-8 bg-[#090d18]">
+    <div class="flex items-start justify-between gap-4 mb-5">
+      <div>
+        <div class="pill">DB ENEM</div>
+        <h2 id="tituloModal" class="text-3xl sm:text-4xl font-bold tracking-[-.04em] mt-4">Cadastro</h2>
+        <p class="text-muted mt-2">Preencha os dados para registro local.</p>
+      </div>
+      <button class="btn-ghost !py-2 !px-4" onclick="fecharModal()">×</button>
+    </div>
+    <div class="grid gap-3">
+      <input class="rounded-2xl border border-white/10 bg-white/[.04] px-5 py-4 text-white outline-none focus:border-yellow-300/50" type="text" id="nome" placeholder="Nome" />
+      <input class="rounded-2xl border border-white/10 bg-white/[.04] px-5 py-4 text-white outline-none focus:border-yellow-300/50" type="email" id="email" placeholder="Email" />
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3 mt-5">
+      <button class="btn-primary flex-1" onclick="salvarCadastro()">Salvar cadastro</button>
+      <button class="btn-ghost flex-1" onclick="fecharModal()">Fechar</button>
+    </div>
+    <div class="glass rounded-2xl p-4 mt-5 text-muted">Total cadastros: <b id="totalCadastros" class="text-[#ffe100]">0</b></div>
+  </div>
+</div>
 
-    function salvarCadastro(){
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
+<script>
+const DISCIPLINAS = [
+  {nome:'Redação', area:'redacao', desc:'Simulado Redação ENEM Premium', questoes:'300 questões', preco:'R$ 29,90', emoji:'✍️', teste:'https://cincoregioes-star.github.io/reda-o-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/NsDMCx9', destaque:true},
+  {nome:'Revisão Final', area:'humanas', desc:'Simulado Revisão Final ENEM Premium', questoes:'50 questões', preco:'R$ 9,90', emoji:'⚡', teste:'https://cincoregioes-star.github.io/revisao-final-enem-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/A20iS8u'},
+  {nome:'Atualidades', area:'humanas', desc:'Simulado Atualidades ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🌍', teste:'https://cincoregioes-star.github.io/atualidades-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/4yauUSB'},
+  {nome:'Sociologia', area:'humanas', desc:'Simulado Sociologia ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'👥', teste:'https://cincoregioes-star.github.io/sociologia-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/cVUqErx'},
+  {nome:'Matemática', area:'matematica', desc:'Simulado Matemática ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'📐', teste:'https://cincoregioes-star.github.io/matematica-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/SKiUUvs'},
+  {nome:'Física', area:'natureza', desc:'Simulado Física ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'⚛️', teste:'https://cincoregioes-star.github.io/fisica-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/qTTx3pO'},
+  {nome:'Química', area:'natureza', desc:'Simulado Química ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🧪', teste:'https://cincoregioes-star.github.io/quimica-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/KRVxuLb'},
+  {nome:'Biologia', area:'natureza', desc:'Simulado Biologia ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🧬', teste:'https://cincoregioes-star.github.io/biologia-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/RGfxyUn'},
+  {nome:'Filosofia', area:'humanas', desc:'Simulado Filosofia ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🧠', teste:'https://cincoregioes-star.github.io/filosofia-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/B6iF4hA'},
+  {nome:'História', area:'humanas', desc:'Simulado História ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🏛️', teste:'https://cincoregioes-star.github.io/historia-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/h8GJzVE'},
+  {nome:'Geografia', area:'humanas', desc:'Simulado Geografia ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🗺️', teste:'https://cincoregioes-star.github.io/geografia-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/64GnsBH'},
+  {nome:'Português', area:'linguagens', desc:'Simulado Português ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'📘', teste:'https://cincoregioes-star.github.io/portugues-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/QxRaDJy'},
+  {nome:'Literatura', area:'linguagens', desc:'Simulado Literatura ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'📚', teste:'https://cincoregioes-star.github.io/literatura-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/plt5Mut'},
+  {nome:'Inglês', area:'linguagens', desc:'Simulado Inglês ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🇬🇧', teste:'https://cincoregioes-star.github.io/ingles-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/Z1n4Xve'},
+  {nome:'Espanhol', area:'linguagens', desc:'Simulado Espanhol ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🇪🇸', teste:'https://cincoregioes-star.github.io/espanhol-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/THSH11k'},
+  {nome:'Artes', area:'linguagens', desc:'Simulado Artes ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🎨', teste:'https://cincoregioes-star.github.io/artes-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/uHVp2Hl'},
+  {nome:'Educação Física', area:'linguagens', desc:'Simulado Educação Física ENEM Premium', questoes:'200 questões', preco:'R$ 19,90', emoji:'🏃', teste:'https://cincoregioes-star.github.io/ed-fisica-teste/?origem=radar_copa_album', premium:'https://pay.kiwify.com.br/TOIMG48'}
+];
 
-      if(!nome || !email){
-        alert("Preencha nome e email.");
-        return;
-      }
+let filtroAtual = 'todos';
 
-      const dados = JSON.parse(localStorage.getItem("alunosDBENEM") || "[]");
+function classeCard(area){
+  if(area === 'natureza') return 'green';
+  if(area === 'linguagens') return 'blue';
+  if(area === 'redacao') return 'red';
+  return '';
+}
 
-      dados.push({
-        nome:nome,
-        email:email,
-        data:new Date().toLocaleString("pt-BR")
-      });
+function areaNome(area){
+  const nomes = {linguagens:'Linguagens', humanas:'Ciências Humanas', natureza:'Ciências da Natureza', matematica:'Matemática', redacao:'Redação'};
+  return nomes[area] || area;
+}
 
-      localStorage.setItem("alunosDBENEM", JSON.stringify(dados));
+function renderDisciplinas(){
+  const grid = document.getElementById('disciplinasGrid');
+  const termo = (document.getElementById('busca')?.value || '').toLowerCase().trim();
 
-      document.getElementById('nome').value = "";
-      document.getElementById('email').value = "";
+  const lista = DISCIPLINAS.filter(d => {
+    const passaFiltro = filtroAtual === 'todos' || d.area === filtroAtual;
+    const passaBusca = !termo || d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo) || areaNome(d.area).toLowerCase().includes(termo);
+    return passaFiltro && passaBusca;
+  });
 
-      atualizarContador();
-      fecharModal();
-      alert("Cadastro salvo.");
-    }
+  grid.innerHTML = lista.map(d => `
+    <article class="card ${classeCard(d.area)} subject-card p-6 ${d.destaque ? 'border-yellow-300/25' : ''}">
+      <div class="subject-top">
+        <div class="flex items-start justify-between gap-4">
+          <div class="text-4xl">${d.emoji}</div>
+          <span class="mono text-[11px] uppercase tracking-[.18em] text-muted">${areaNome(d.area)}</span>
+        </div>
+        <h3 class="text-3xl font-bold mt-5 tracking-[-.035em]">${d.nome}</h3>
+        <p class="text-muted mt-3 leading-relaxed">${d.desc}</p>
+        <div class="glass rounded-2xl p-4 mt-5 grid gap-2 text-sm">
+          <div>Premium: <b class="text-[#ffe100]">${d.questoes}</b></div>
+          <div>Valor: <b class="text-[#11b7ff]">${d.preco}</b></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3 mt-5">
+        <a class="btn-ghost !px-4 !py-3" href="${d.teste}" target="_blank" rel="noopener">Teste</a>
+        <a class="btn-primary !px-4 !py-3" href="${d.premium}" target="_blank" rel="noopener">Premium</a>
+      </div>
+    </article>
+  `).join('');
 
-    function atualizarContador(){
-      const dados = JSON.parse(localStorage.getItem("alunosDBENEM") || "[]");
+  aplicarMouseGlow();
+}
 
-      const totalCadastros = document.getElementById("totalCadastros");
-      const totalCadastrosTopo = document.getElementById("totalCadastrosTopo");
+function aplicarMouseGlow(){
+  document.querySelectorAll('.card').forEach(card => {
+    card.onmousemove = (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    };
+  });
+}
 
-      if(totalCadastros){
-        totalCadastros.innerText = dados.length;
-      }
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filtroAtual = btn.dataset.filter;
+    renderDisciplinas();
+  });
+});
 
-      if(totalCadastrosTopo){
-        totalCadastrosTopo.innerText = dados.length;
-      }
-    }
+document.getElementById('busca').addEventListener('input', renderDisciplinas);
 
-    atualizarContador();
-  </script>
-  <script src="radar-copa-parceiro.js"></script>
+function abrirCadastro(tipo){
+  document.getElementById('modalCadastro').classList.add('active');
+  document.getElementById('modalCadastro').setAttribute('aria-hidden','false');
+  document.getElementById('tituloModal').innerText = tipo === 'entrar' ? 'Entrar no DB ENEM' : 'Cadastrar aluno';
+}
 
+function fecharModal(){
+  document.getElementById('modalCadastro').classList.remove('active');
+  document.getElementById('modalCadastro').setAttribute('aria-hidden','true');
+}
+
+function salvarCadastro(){
+  const nome = document.getElementById('nome').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if(!nome || !email){
+    alert('Preencha nome e email.');
+    return;
+  }
+
+  const dados = JSON.parse(localStorage.getItem('alunosDBENEM') || '[]');
+  dados.push({nome, email, data:new Date().toLocaleString('pt-BR')});
+  localStorage.setItem('alunosDBENEM', JSON.stringify(dados));
+  document.getElementById('nome').value = '';
+  document.getElementById('email').value = '';
+  atualizarContador();
+  fecharModal();
+  alert('Cadastro salvo.');
+}
+
+function atualizarContador(){
+  const dados = JSON.parse(localStorage.getItem('alunosDBENEM') || '[]');
+  ['totalCadastros','totalCadastrosRodape'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.innerText = dados.length;
+  });
+}
+
+document.getElementById('modalCadastro').addEventListener('click', (e) => {
+  if(e.target.id === 'modalCadastro') fecharModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') fecharModal();
+});
+
+renderDisciplinas();
+atualizarContador();
+aplicarMouseGlow();
+</script>
+<script src="radar-copa-parceiro.js"></script>
 </body>
 </html>
